@@ -14,5 +14,12 @@
   "bugs": {
     "url": "https://github.com/dmmeteo/test-front-end/issues"
   },
-  "homepage": "https://github.com/dmmeteo/test-front-end#readme"
+  "homepage": "https://github.com/dmmeteo/test-front-end#readme",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "browser-sync": "^2.14.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-sass": "^2.3.2"
+  }
 }
