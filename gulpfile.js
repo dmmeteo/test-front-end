@@ -2,11 +2,10 @@
 
 var gulp          = require('gulp'),
     sass          = require('gulp-sass'), //компилятор sass
-    eslint        = require('gulp-eslint'), //валидатор js
     inject        = require('gulp-inject'), //инекция css и js в index.html
     wiredep       = require('wiredep').stream, //инекция bower зависмостей в index.html
     changed       = require('gulp-changed'), //компиляция только изменного файла
-    browserSync   = require('browser-sync'), //автообновление страницы
+    browserSync   = require('browser-sync').create, //автообновление страницы
     prefixer  	  = require('gulp-autoprefixer'), //автодобавление прификсов css
     imagemin 	    = require('gulp-imagemin'), //для сжатия изображений
     pngquant 	    = require('imagemin-pngquant'); //дополнение imagemin для файлов png
@@ -34,47 +33,44 @@ gulp.task('styles:build', function(){
 
 //Build scripts
 gulp.task('scripts:build', function(){
-	var target = gulp.src(config.path.src.scripts);
+  var target = gulp.src(config.path.src.scripts);
 
-	return target //директория исходники
-		.pipe(eslint())
-		.pipe(eslint.format()) //проверка валидности
-		.pipe(gulp.dest(config.path.tmp.scripts)) //директория для результат
-		.pipe(browserSync.reload({stream: true})); //перезагрузка страницы
+  return target //директория исходники
+    .pipe(gulp.dest(config.path.tmp.scripts)) //директория для результат
+    .pipe(browserSync.reload({stream: true})); //перезагрузка страницы
 });
 
 //Build images
 gulp.task('image:build', function () {
-	var target = gulp.src(config.path.src.img);
-	var imageminOptions = {
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()],
-            interlaced: true
-        };
+  var target = gulp.src(config.path.src.img);
+  var imageminOptions = {
+    progressive: true,
+    svgoPlugins: [{removeViewBox: false}],
+    use: [pngquant()],
+    interlaced: true
+  };
 
-    return target
-        .pipe(imagemin(imageminOptions))
-        .pipe(gulp.dest(config.path.tmp.img))
-        .pipe(browserSync.reload({stream: true}));
+  return target
+    .pipe(imagemin(imageminOptions))
+    .pipe(gulp.dest(config.path.tmp.img))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 //Inject
-gulp.task('inject', function(){
+gulp.task('inject', ['scripts:build', 'styles:build'], function(){
   var target  = gulp.src(config.path.src.html), //находим индекс или что-то другое .html
-      sources = gulp.src([ //подключение стилей и скриптов
-        config.path.tmp.styles,
-        config.path.tmp.scripts
-      ], {
-        read: false
-      });
+    sources = gulp.src([ //подключение стилей и скриптов
+      config.path.tmp.styles+'*.css',
+      config.path.tmp.scripts+'*.js'
+    ], {
+      read: false
+    });
   var options = {
     ignorePath: [
-      clean.src,
-      clean.tmp
+      config.path.clean.dest,
+      config.path.clean.tmp
     ],
-    addRootSlash: false,
-    relative: true
+    addRootSlash: false
   };
 
   return target
@@ -84,22 +80,22 @@ gulp.task('inject', function(){
 });
 
 //Server
-gulp.task('webserver' ['inject'], function () {
-    browserSync(config.server);
+gulp.task('webserver', ['inject', 'image:build'], function () {
+  browserSync(config.server);
 });
 
-//Watch
-gulp.task('watch', ['browser-sync', 'sass'], function(){
+
+//Watch надо доделать совсем немного
+gulp.task('watch', ['webserver'], function(){
   gulp.watch(SRC+styles+'**/*.sass', ['sass']); //следим за изменениями в sass
   gulp.watch(SRC+scripts+'**/*.js', browserSync.reload); //следим за изменениями в js
   gulp.watch(SRC+'**/*.html', browserSync.reload); //следим за изменениями index.html
 });
 
 gulp.task('bower', function(){
-	gulp.src(SRC+'**/*.html')
-	.pipe(wiredep({
-		directory : 'bower_components'
-	}))
-	.pipe(gulp.dest(DEST))
+  gulp.src(SRC+'**/*.html')
+    .pipe(wiredep({
+      directory : 'bower_components'
+    }))
+    .pipe(gulp.dest(DEST))
 });
-

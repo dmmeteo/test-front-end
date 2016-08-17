@@ -5,7 +5,7 @@ module.exports = config;
 function config(){
 'use strict';
 
-	config.path = {  
+	config.path = {
 	    tmp: {
 	        html: '.tmp/',
 	        scripts: '.tmp/scripts/',
@@ -20,14 +20,19 @@ function config(){
 	    },
 	    clean: {
 	    	tmp: '.tmp/',
+        src: 'src/',
 	    	dest: 'dist/'
 	    }
 	},
 
 	config.server = {
+      startPath: '/',
 	    server: {
-	        baseDir: ".tmp/"
-	    },
+	        baseDir: ".tmp/",
+          routes: {
+            '/bower_components': 'bower_components' //дает возможность выходить за директорию проэкта
+          }
+      },
 	    tunnel: true,
 	    host: 'localhost',
 	    port: 3000,
