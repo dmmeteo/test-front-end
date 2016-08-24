@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="DemoApp">
 <head>
+    <base href="/"/>
     <meta charset="UTF-8">
-    <title>Test front end</title>
+    <title>Frontend test</title>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css styles/main.css -->
+    <!-- build:css styles/app.css -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- endbuild -->
 </head>
 <body>
-
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -25,24 +25,37 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">test frontEnd</a>
+          <a class="navbar-brand" href="/">Frontend test</a>
         </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/user-list">User list</a></li>
+            <li><a href="/user-add">Usre add</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form">
             <div class="form-group">
-              <input type="text" placeholder="Filter" class="form-control">
+              <input type="text" placeholder="Filter" class="form-control" ng-model="query">
             </div>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
 
+    <ng-view></ng-view> <!--Content-->     
+
+    <div class="container">
+      <footer>
+        <p>© noCompany 2016</p>
+      </footer>
+    </div> <!-- /container -->
+
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js scripts/main.js -->
+    <!-- build:js scripts/app.js -->
     <!-- inject:js -->
     <!-- endinject -->
     <!-- endbuild -->

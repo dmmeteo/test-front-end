@@ -1,0 +1,51 @@
+
+<div class="container">
+	<div class="row" >
+	  <div class="col-md-12" ng-controller="SwitchCtrl">
+
+		<div class="bar">
+			<a ng-class="{active: layout == 'list'}" ng-click="layout = 'list'">List</a>
+			<a ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'">Grid</a>
+			<a href="" ng-click="sort = 'firstName'; reverse=!reverse">Order by name</a>
+			<a href="" ng-click="sort = 'birth'; reverse=!reverse">Order by birth</a>
+		</div>
+
+		<ul ng-show="layout == 'grid'" class="grid">
+			<li ng-repeat="user in users | orderBy:sort:reverse">
+				<a href="#" target="_blank"><img ng-src="{{user.photo}}" /></a>
+				<h3>{{user.firstName}} {{user.lastName}}</h3>
+				<p>
+			    	Birth: {{user.birth}}<br/>
+			    	Sex: {{user.sex}}<br/>
+			    	About: {{user.about}}<br/>
+				</p>
+			</li>
+		</ul>
+
+		
+		<table ng-show="layout == 'list'" class="list">
+		<tbody>
+			<tr ng-repeat="user in users | orderBy:sort:reverse">
+				<td>
+				<a href="#" target="_blank"><img ng-src="{{user.photo}}" /></a>
+				</td>
+				<td>
+					<h3>{{user.firstName}} {{user.lastName}}</h3>
+				</td>
+				<td>
+					Birth: {{user.birth}}
+				</td>
+				<td>
+					Sex: {{user.sex}}
+				</td>
+				<td>
+					About: {{user.about}}
+				</td>
+			</tr>
+		</tbody>
+		</table>
+
+	</div>
+
+</div>
+</div>
