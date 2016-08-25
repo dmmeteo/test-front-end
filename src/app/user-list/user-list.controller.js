@@ -1,13 +1,13 @@
 (function() {
 	'use strict';
 	angular
-		.module('DemoApp')
-		.controller('UserListCtrl', UserListCtrl);
+		.module('UserListApp')
+		.controller('UserListCtrl', ['$http', UserListCtrl]);
 
-		function UserListCtrl($scope, $http){
+		function UserListCtrl($http){
+			var vm = this;
 			$http.get('json/users.json').success(function(data) {
-			    $scope.users = data;
+			    vm.users = data;
 			});
-
-		}
+		};
 })();

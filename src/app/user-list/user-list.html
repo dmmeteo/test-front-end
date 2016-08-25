@@ -1,17 +1,17 @@
 
 <div class="container">
-	<div class="row" >
-	  <div class="col-md-12" ng-controller="SwitchCtrl">
+	<div class="row">
+	  <div class="col-md-12" ng-controller="SwitchCtrl as switch">
 
 		<div class="bar">
-			<a ng-class="{active: layout == 'list'}" ng-click="layout = 'list'">List</a>
-			<a ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'">Grid</a>
+			<a ng-class="{active: switch.layout == 'list'}" ng-click="switch.layout = 'list'">List</a>
+			<a ng-class="{active: switch.layout == 'grid'}" ng-click="switch.layout = 'grid'">Grid</a>
 			<a href="" ng-click="sort = 'firstName'; reverse=!reverse">Order by name</a>
 			<a href="" ng-click="sort = 'birth'; reverse=!reverse">Order by birth</a>
 		</div>
 
-		<ul ng-show="layout == 'grid'" class="grid">
-			<li ng-repeat="user in users | orderBy:sort:reverse">
+		<ul ng-show="switch.layout == 'grid'" class="grid">
+			<li ng-repeat="user in user.users | orderBy:sort:reverse">
 				<a href="#" target="_blank"><img ng-src="{{user.photo}}" /></a>
 				<h3>{{user.firstName}} {{user.lastName}}</h3>
 				<p>
@@ -23,9 +23,9 @@
 		</ul>
 
 		
-		<table ng-show="layout == 'list'" class="list">
+		<table ng-show="switch.layout == 'list'" class="list">
 		<tbody>
-			<tr ng-repeat="user in users | orderBy:sort:reverse">
+			<tr ng-repeat="user in user.users | orderBy:sort:reverse | startFrom: paginationCtrl.startingItem() | limitTo: paginationCtrl.itemsPerPage">
 				<td>
 				<a href="#" target="_blank"><img ng-src="{{user.photo}}" /></a>
 				</td>
@@ -44,6 +44,10 @@
 			</tr>
 		</tbody>
 		</table>
+
+
+<!--Paginator--><paginator></paginator>
+
 
 	</div>
 

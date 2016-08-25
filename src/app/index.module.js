@@ -2,5 +2,10 @@
 	'use strict';
 	
 	angular
-		.module('DemoApp', ['ngRoute']);
+		.module('DemoApp', [
+			'ngRoute',
+			'TaskApp',
+			'UserListApp',
+			'PaginatorApp'
+			]);
 })();

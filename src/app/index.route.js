@@ -8,13 +8,15 @@
 			requireBase: false
 		});
 		$routeProvider
-			.when ('/', {
-				templateUrl: 'templates/home/home.html',
-				controller: 'TaskListCtrl'
-			})
 			.when ('/user-list', {
+				templateUrl: 'templates/home/home.html',
+				controller: 'TaskListCtrl',
+				controllerAs: 'home'
+			})
+			.when ('/', {
 				templateUrl: 'templates/user-list/user-list.html',
-				controller: 'UserListCtrl'
+				controller: 'UserListCtrl',
+				controllerAs: 'user'
 			})
 			.when ('/user-add', {
 				templateUrl: 'templates/user-add/user-add.html',

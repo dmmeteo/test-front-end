@@ -1,10 +1,10 @@
 (function() {
 	'use strict';
 	angular
-		.module('DemoApp')
+		.module('UserListApp')
 		.controller('SwitchCtrl', SwitchCtrl);
 
-		function SwitchCtrl($scope){
-			$scope.layout = 'list';
+		function SwitchCtrl(){
+			this.layout = 'list';
 		}
 })();
