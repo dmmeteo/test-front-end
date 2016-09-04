@@ -2,12 +2,10 @@
 	'use strict';
 	angular
 		.module('UserListApp')
-		.controller('UserListCtrl', ['$http', UserListCtrl]);
+		.controller('UserListCtrl', ['UserFactory', UserListCtrl]);
 
-		function UserListCtrl($http){
+		function UserListCtrl(UserFactory){
 			var vm = this;
-			$http.get('json/users.json').success(function(data) {
-			    vm.users = data;
-			});
+			vm.users = UserFactory;
 		};
 })();

@@ -4,8 +4,10 @@
 	angular
 		.module('DemoApp', [
 			'ngRoute',
+			'720kb.datepicker',
+			'UserApp',
 			'TaskApp',
 			'UserListApp',
-			'PaginatorApp'
+			'UserAddApp'
 			]);
 })();
