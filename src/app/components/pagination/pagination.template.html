@@ -1,0 +1,7 @@
+<div class="pagination-wrap" ng-controller="PaginationCtrl as num">
+	<ul class="pagination">
+		<li ng-repeat="page in num.getPaginationList" ng-class="{'active': num.activePage() == page.link}">
+			<a ng-href="#/user-list/{{num.stepControl(page.link)}}" ng-click="num.showPage(page.link)">{{page.name}}</a>
+		</li>
+	</ul>
+</div>

@@ -6,7 +6,7 @@
 		function UserFactory () {
 			return [ //нет возможности добавить json в переменную
 {
-    "id": 1,
+    "id": 0,
     "register": "30/08/2016",
     "firstName": "John",
     "lastName": "Doe", 
@@ -16,7 +16,7 @@
     "about": "Hypster"
 },
 {
-    "id": 2,
+    "id": 1,
     "register": "30/08/2016",
     "firstName": "Bob",
     "lastName": "Kartman", 
@@ -26,7 +26,7 @@
     "about": "Student"
 },
 {
-    "id": 3,
+    "id": 2,
     "register": "30/08/2016",
     "firstName": "Bill", 
     "lastName": "Rich", 
@@ -36,7 +36,7 @@
     "about": "Businessman"
 },
 {
-    "id": 4,
+    "id": 3,
     "register": "30/08/2016",
     "firstName": "Jack", 
     "lastName": "Bond", 
@@ -46,7 +46,7 @@
     "about": "Police"
 },
 {
-    "id": 5,
+    "id": 4,
     "register": "30/08/2016",
     "firstName": "Ninja", 
     "lastName": "Lee", 
@@ -56,7 +56,7 @@
     "about": "Ninja"
 },
 {
-    "id": 6,
+    "id": 5,
     "register": "30/08/2016",
     "firstName": "Anton", 
     "lastName": "Uncovered", 
@@ -66,7 +66,7 @@
     "about": "Operator"
 },
 {
-    "id": 7,
+    "id": 6,
     "register": "30/08/2016",
     "firstName": "Steve", 
     "lastName": "McCormick", 
@@ -76,7 +76,7 @@
     "about": "Manager"
 },
 {
-    "id": 8,
+    "id": 7,
     "register": "30/08/2016",
     "firstName": "Sasha", 
     "lastName": "Grey", 

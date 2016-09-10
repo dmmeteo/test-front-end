@@ -2,5 +2,5 @@
 	'use strict';
 	
 	angular
-		.module('UserAddApp', []);
+		.module('PaginationApp', []);
 })();

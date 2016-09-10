@@ -12,17 +12,17 @@
 			vm.usersNumber = UserFactory.length;
 			vm.today = $filter('date')(new Date, "dd/MM/yyyy");
 			vm.saveUser = function(){
-		        vm.users.push({
-		        	id: vm.usersNumber,
-		        	register: vm.today,
-		        	firstName: vm.firstname,
-		        	lastName: vm.secondname,
-		        	birth: vm.birth,
-		        	sex: vm.sex,
-		        	photo: vm.photo,
-		        	about: vm.about
-		        });
-		        vm.firstname = '';
+				vm.users.push({
+					id: vm.usersNumber,
+					register: vm.today,
+					firstName: vm.firstname,
+					lastName: vm.secondname,
+					birth: vm.birth,
+					sex: vm.sex,
+					photo: vm.photo,
+					about: vm.about
+				});
+				vm.firstname = '';
 				vm.secondname = '';
 				vm.birth = '';
 				vm.sex = '';
