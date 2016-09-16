@@ -13,7 +13,7 @@
 				startingItem: 0,
 
 				getTotalPagesNum: function() {
-					return Math.ceil( this.items / this.itemsPerPage );
+					return Math.ceil( this.items.length / this.itemsPerPage );
 				},//end getTotalPagesNum
 
 				getPage: function(num) {

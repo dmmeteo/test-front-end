@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-		<form name="addUser" novalidate >
+		<form name="addUser" ng-submit="addUser.$valid && data.saveUser()" novalidate>
 			<div class="row">
 				<div class="col-sm-6">
 					<!--First name-->
@@ -43,8 +43,7 @@
 
 
 					<!--Submit-->
-					<button type="reset" class="btn btn-primary btn-lg" ng-disabled="addUser.$invalid" ng-click="data.saveUser()">Submit</button>
-
+					<input type="submit" class="btn btn-success btn-lg" ng-disabled="addUser.$invalid" value="Submit"/>
 
 				</div>
 				<div class="col-sm-6">
@@ -55,7 +54,7 @@
 						<label ng-show="switch = (data.sex) ? user.sex == data.sex: true" class="custom-label" ng-repeat="user in data.users | filter:'30/08/2016'">
 							<input name="avator" type="radio" ng-model="data.photo" value="{{user.photo}}" required>
 							<img ng-src="{{user.photo}}" ng-click="data.sex = user.sex" />
-						</label> 	  		
+						</label>
 					</div>
 
 					<div class="alert alert-success" ng-show="data.alert"><strong>Success!</strong>

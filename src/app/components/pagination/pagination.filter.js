@@ -6,14 +6,14 @@
 
 		function itemsPerPage($filter,PaginationFactory){
 			return function(input, limitItems){
-				var f = PaginationFactory,
-						startFrom = f.startingItem;
+				if (input !== undefined){
+					var f = PaginationFactory,
+							startFrom = f.startingItem;
 
-				//передача данных input в фабрику
-				f.itemsPerPage = limitItems;
-				f.items = input.length;
-
-				if (input){
+					//передача данных input в фабрику
+					f.itemsPerPage = limitItems;
+					f.items = input;
+					
 					return $filter('limitTo')(input.slice(startFrom), limitItems);
 				}
 				return [];
