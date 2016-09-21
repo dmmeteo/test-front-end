@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		
+			<!--Controll bar-->
+			<div class="bar" ng-init="switch = 'list'">
+				<a ng-class="{active: switch == 'list'}" ng-click="switch = 'list'">List</a>
+				<a ng-class="{active: switch == 'grid'}" ng-click="switch = 'grid'">Grid</a>
+				<a href="" ng-click="sort = 'firstName'; reverse=!reverse">Order by name</a>
+				<a href="" ng-click="sort = 'register'; reverse=!reverse">Order by register date</a>
+			</div>
+			
+			<!--Layout grid-->
+			<ul ng-show="switch == 'grid'" class="grid">
+				<li ng-repeat="user in user.users | orderBy:sort:reverse | filter:{serch:query} | itemsPerPage:4">
+					<a href="#/user/{{user.id}}"><img ng-src="{{user.photo}}" /></a>
+					<h3><a href="#/user/{{user.id}}">{{user.firstName}} {{user.lastName}}</a></h3>
+					<!--добавление нового метода объекту user-->
+					<p ng-init="user.serch = user.firstName+' '+user.lastName+' '+user.about">
+					<!--самый простой способ решения задачи поиска-->
+							Birth: {{user.birth}}<br/>
+							Sex: {{user.sex}}<br/>
+							About: {{user.about}}<br/>
+					</p>
+				</li>
+			</ul>
+
+			<!--Layout list:default-->
+			<table ng-show="switch == 'list'" class="list">
+			<tbody>
+				<tr ng-repeat="user in user.users | orderBy:sort:reverse | filter:{serch:query} | itemsPerPage:4">
+					<!--добавление нового метода объекту user-->
+					<td ng-init="user.serch = user.firstName+' '+user.lastName+' '+user.about">
+					<!--самый простой способ решения задачи поиска-->
+						<a href="#/user/{{user.id}}"><img ng-src="{{user.photo}}" /></a>
+					</td>
+					<td>
+						<h3><a href="#/user/{{user.id}}">{{user.firstName}} {{user.lastName}}</a></h3>
+					</td>
+					<td>
+						Birth: {{user.birth}}
+					</td>
+					<td>
+						Sex: {{user.sex}}
+					</td>
+					<td>
+						About: {{user.about}} 
+					</td>
+				</tr>
+			</tbody>
+			</table>
+			<!--Paginator-->
+			<div pagination-dir></div>
+		</div>
+	</div>
+</div>

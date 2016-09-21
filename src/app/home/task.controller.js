@@ -11,7 +11,7 @@
 			return $sce.trustAsResourceUrl(link);
 		};
 		vm.tasks = [];
-		$http.get('app/json/tasks.json').success(function(data){
+		$http.get('json/tasks.json').success(function(data){
 			vm.tasks = data;
 		});
 

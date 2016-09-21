@@ -1,0 +1,71 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+		<form name="addUser" ng-submit="addUser.$valid && data.saveUser()" novalidate>
+			<div class="row">
+				<div class="col-sm-6">
+					<!--First name-->
+					<div class="form-group" ng-class="{ 'has-error' : addUser.firstname.$invalid && !addUser.firstname.$pristine }">
+						<input type="text" name="firstname" class="form-control" placeholder="first name" ng-model="data.firstname" ng-minlength="3" ng-maxlength="12" required>
+						<p ng-show="addUser.firstname.$error.minlength" class="help-block">Firstname is too short.</p>
+						<p ng-show="addUser.firstname.$error.maxlength" class="help-block">Firstname is too long.</p>
+					</div>
+
+					<!--Second name-->
+					<div class="form-group" ng-class="{ 'has-error' : addUser.secondname.$invalid && !addUser.secondname.$pristine }">
+						<input type="text" name="secondname" class="form-control" placeholder="second name" ng-model="data.secondname" ng-minlength="3" ng-maxlength="12" required>
+						<p ng-show="addUser.secondname.$error.minlength" class="help-block">Secondname is too short.</p>
+						<p ng-show="addUser.secondname.$error.maxlength" class="help-block">Secondname is too long.</p>
+					</div>
+
+					<!--User sex-->
+					<div class="form-group" ng-class="{ 'has-error' : addUser.sex.$invalid && !addUser.sex.$pristine }">
+						<div class="radio">
+							<label><input type="radio" ng-model="data.sex" name="sex" value="male"  required>male</label><br/>
+							<label><input type="radio" ng-model="data.sex" name="sex" value="female"required>female</label>
+							<p ng-show="addUser.sex.$error.checked" class="help-block">Secondname is too long.</p>
+						</div>
+					</div>
+
+					<!--User birth-->
+					<datepicker date-format="dd/MM/yyyy" selector="form-control">
+						<div class="form-group" ng-class="{ 'has-error' : addUser.birth.$invalid && !addUser.birth.$pristine }">
+							<input name="birth" ng-model="data.birth" class="form-control" type="text" ng-pattern="/^\d{2}\/\d{2}\/\d{4}$/img" placeholder="Choose a date"/ required>
+							<p ng-show="addUser.birth.$error.pattern" class="help-block">It is not date format.</p>
+						</div>
+					</datepicker>
+
+					<!--User about-->
+					<div class="form-group" ng-class="{ 'has-error' : addUser.about.$invalid && !addUser.about.$pristine }">
+						<textarea name="about" class="form-control" ng-maxlength="40" rows="2" ng-model="data.about" placeholder="Tell some about you" required></textarea>
+						<p ng-show="addUser.about.$error.maxlength" class="help-block">About is too long.</p>
+					</div>
+
+
+					<!--Submit-->
+					<input type="submit" class="btn btn-success btn-lg" ng-disabled="addUser.$invalid" value="Submit"/>
+
+				</div>
+				<div class="col-sm-6">
+
+					<!--Avators-->
+					<div class="form-group" ng-class="{ 'has-error' : addUser.avator.$invalid && !addUser.avator.$pristine }">
+						<label>Avators:</label><br/>
+						<label ng-show="switch = (data.sex) ? user.sex == data.sex: true" class="custom-label" ng-repeat="user in data.users | filter:'30/08/2016'">
+							<input name="avator" type="radio" ng-model="data.photo" value="{{user.photo}}" required>
+							<img ng-src="{{user.photo}}" ng-click="data.sex = user.sex" />
+						</label>
+					</div>
+
+					<div class="alert alert-success" ng-show="data.alert"><strong>Success!</strong>
+					You add new user!
+					<button type="button" class="close" aria-hidden="true" ng-click="data.alert = false">&times;</button>
+					</div>
+					
+
+				</div>
+			</div><!--End ROW-->
+		</form><!--End form-->
+		</div>
+	</div>
+</div><!--End container-->

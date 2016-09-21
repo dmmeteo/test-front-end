@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="DemoApp">
 <head>
     <meta charset="UTF-8">
-    <title>Test front end</title>
+    <title>Frontend test</title>
     <link rel="stylesheet" href="styles/vendor.css">
 
     <link rel="stylesheet" href="styles/app.css">
@@ -18,49 +18,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">test frontEnd</a>
+          <a class="navbar-brand" href="#/">Frontend test</a>
         </div>
+          <ul class="nav navbar-nav">
+            <li><a href="#/user-list">User list</a></li>
+            <li><a href="#/user-add">Usre add</a></li>
+            <li><a href="#/about">About</a></li>
+          </ul>
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form">
             <div class="form-group">
-              <input type="text" placeholder="Filter" class="form-control">
+              <input type="text" placeholder="Filter" class="form-control" ng-model="query">
             </div>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Задание 1</h2>
-          <iframe width="100%" height="350" src="http://jsfiddle.net/dmmeteo/0Lvbe5ek/embedded/result,html,css,js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Задание 2</h2>
-          <iframe width="100%" height="750" src="http://jsfiddle.net/dmmeteo/vdqnkknb/embedded/result,html,css,js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Задание 3</h2>
-          <iframe width="100%" height="450" src="http://jsfiddle.net/dmmeteo/fv2bsj4x/embedded/result,html,css,js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Задание 4</h2>
-          <iframe width="100%" height="350" src="https://jsfiddle.net/dmmeteo/m510ffq9/embedded/result,html,css,js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-        </div>
-      </div>
-      
-
-      <footer>
-        <p>© noCompany 2016</p>
-      </footer>
-    </div> <!-- /container -->
+    <ng-view></ng-view> <!--Content-->     
 
     <script src="scripts/vendor.js"></script>
 

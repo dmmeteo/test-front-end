@@ -2,38 +2,38 @@
 	'use strict';
 	angular
 		.module('DemoApp')
-		.config (function($routeProvider){
+		.config (['$routeProvider', function($routeProvider){
 
 		$routeProvider
 			.when ('/', {
-				templateUrl: 'app/home/home.html',
+				templateUrl: 'templates/home/home.html',
 				controller: 'TaskListCtrl',
 				controllerAs: 'home'
 			})
 			.when ('/user-list', {
-				templateUrl: 'app/user-list/user-list.html',
+				templateUrl: 'templates/user-list/user-list.html',
 				controller: 'UserListCtrl',
 				controllerAs: 'user'
 			})
 			.when ('/user-list/:page', {
-				templateUrl: 'app/user-list/user-list.html',
+				templateUrl: 'templates/user-list/user-list.html',
 				controller: 'UserListCtrl',
 				controllerAs: 'user'
 			})
 			.when ('/user-add', {
-				templateUrl: 'app/user-add/user-add.html',
+				templateUrl: 'templates/user-add/user-add.html',
 				controller: 'UserAddCtrl',
 				controllerAs: 'data'
 			})
 			.when ('/user/:userId', {
-				templateUrl: 'app/user-info/user-info.html',
+				templateUrl: 'templates/user-info/user-info.html',
 				controller: 'UserInfoCtrl',
 				controllerAs: 'info'
 			})
 			.when ('/about', {
-				templateUrl: 'app/about/about.html',
+				templateUrl: 'templates/about/about.html',
 				controller: ''
 			})
 			.otherwise({redirectTo:'/'});
-	});
+	}]);
 })();

@@ -7,7 +7,7 @@
 
 		function paginationDir() {
 			return {
-				templateUrl: 'app/components/pagination/pagination.template.html',
+				templateUrl: 'templates/components/pagination/pagination.template.html',
 				link: function(scope, iElement, iAttrs) {
 					//body...
 				}
